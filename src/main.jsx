@@ -7,11 +7,13 @@ import Home from './pages/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import AuthProviders from './providers/AuthProviders';
+import ErrorComponent from './components/ErrorComponent';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorComponent></ErrorComponent>,
     children: [
       {
         path: '/',
