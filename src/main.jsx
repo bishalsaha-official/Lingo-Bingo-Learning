@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AuthProviders from './providers/AuthProviders';
 import ErrorComponent from './components/ErrorComponent';
+import Learn from './pages/Learn';
+import Tutorials from './pages/Tutorials';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,16 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
-      }
+      },
+      {
+        path: '/learn',
+        loader: ()=> fetch('../public/language.json'),
+        element: <Learn></Learn>
+      },
+      {
+        path: '/tutorials',
+        element: <Tutorials></Tutorials>
+      },
     ]
   },
 ]);
