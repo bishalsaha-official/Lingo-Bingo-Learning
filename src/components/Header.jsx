@@ -1,6 +1,19 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProviders";
+import WelcomeMessage from "./WelcomeMessage";
 
 const Header = () => {
+    const {user, logoutUser} = useContext(AuthContext)
+    const handleSignOut = ()=>{
+        logoutUser()
+        .then(result =>{
+            console.log(result)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    }
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/startlearning">Start Learning</NavLink></li>
@@ -8,6 +21,9 @@ const Header = () => {
     </>
     return (
         <div>
+            {
+                user && user.email ? <WelcomeMessage message={user.email}></WelcomeMessage> : <div></div>
+            }
             <div className="navbar bg-base-100 shadow-sm px-10">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -28,7 +44,10 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login' className="btn">LogIn</Link>
+                    {
+                        (user && user.email) ? <button onClick={handleSignOut} className="btn">SignOut</button> : <Link to='/login' className="btn">LogIn</Link>
+                    }
+                    
                 </div>
             </div>
         </div>

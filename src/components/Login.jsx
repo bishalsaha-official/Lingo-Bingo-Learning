@@ -1,11 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProviders";
 
 const Login = () => {
+    const {loginUser, setUser} = useContext(AuthContext)
+
+    const handleLogin = e =>{
+        e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.password.value
+
+        loginUser(email, password)
+        .then(result =>{
+            setUser(result)
+            console.log(result)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
     return (
         <div className="min-h-screen bg-base-200 flex items-center justify-center px-4">
             <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg">
                 <h2 className="text-3xl font-bold text-center text-primary">Login to Your Account</h2>
-                <form className="space-y-4">
+                <form onSubmit={handleLogin} className="space-y-4">
                     {/* Email */}
                     <div>
                         <label className="label" htmlFor="email">
