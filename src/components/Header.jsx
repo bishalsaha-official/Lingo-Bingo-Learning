@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 const Header = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about">About Us</NavLink></li>
         <li><NavLink to="/startlearning">Start Learning</NavLink></li>
         <li><NavLink to="/tutorials">Tutorials</NavLink></li>
     </>
@@ -29,7 +28,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className="btn">LogIn</Link>
+                    <Link to='/login' className="btn">LogIn</Link>
                 </div>
             </div>
         </div>
