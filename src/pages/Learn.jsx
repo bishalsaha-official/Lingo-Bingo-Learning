@@ -1,7 +1,5 @@
 import { Link, useLoaderData } from 'react-router-dom';
 
-const lessons = Array.from({ length: 10 }, (_, i) => i + 1);
-
 const LetsLearnPage = () => {
     const data = useLoaderData()
     console.log(data)
@@ -11,17 +9,6 @@ const LetsLearnPage = () => {
             <h1 className="text-3xl font-bold text-center mb-8">Let’s Learn Vocabulary</h1>
 
             {/* Lesson Cards */}
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
-                {lessons.map((lesson) => (
-                    <Link to={`/lesson/${lesson}`} key={lesson}>
-                        <div className="card bg-base-100 shadow-md hover:shadow-xl transition-all border border-primary cursor-pointer">
-                            <div className="card-body items-center">
-                                <h2 className="text-xl font-semibold">Lesson-{lesson}</h2>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </div> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
                 {
                     data.map(lession => <Link key={lession.id}>
